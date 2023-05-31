@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="static/sat1.css">
+</head>
+
+<body>
+    <header class="fixed-header">
+        <div class="logo">
+            <img src="static/logo_sat.png" alt="Logo">
+        </div>
+        <div class="company-name">
+            Sat_temp_Convertor
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact_us">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br><br>
+    <main>
+
+        <div id="home">
+
+            <div class="container">
+                <h2>Temperature Converter</h2>
+                <form method="POST" action="{{ url_for('convert') }}">
+                    <input type="number" name="temperature" required>
+                    <select name="unit">
+                        <option value="Select unit">Select Unit</option>
+                        <option value="celsius">Celsius</option>
+                        <option value="fahrenheit">Fahrenheit</option>
+                        <option value="kelvin">Kelvin</option>
+                        <option value="rankine">Rankine</option>
+                    </select>
+                    <button type="submit">Convert</button>
+                </form>
+            </div>
+            {% if converted_temps %}
+            <div class="result">
+                <h2>Given Units:</h2>
+                <ul>
+                    <li>Original Temperature: {{ original_temp }} {{ original_unit }}</li>
+                </ul>
+
+                <h2>Converted Temperatures:</h2>
+                <ul>
+
+                    {% for unit, temp in converted_temps.items() %}
+                    <li>{{ temp }} {{ unit }}</li>
+                    {% endfor %}
+
+
+                </ul>
+            </div>
+            {% endif %}
+
+        </div>
+
+        <div id="about">
+            <h1>About</h1>
+            <p>I am Satish Maurya, a driven B.Tech student in Information Technology, seeking opportunities in
+                problem-solving and innovative solutions. With strong leadership skills, diverse programming expertise,
+                and a passion for learning, I thrive in challenging environments. Let's collaborate to create impactful
+                solutions and make a positive impact in the tech industry.</p>
+
+
+        </div>
+
+        <div id="contact_us">
+            <h1>Contact</h1>
+            <h3>Name : Satish Maurya</h3>
+            <h3>Email : Satishreso888@gmail.com</h3>
+            <h3>Mobile : 7891563762</h3>
+
+
+        </div>
+
+
+
+
+
+    </main>
+    <br><br><br><br>
+    <footer>
+        <div class="copyright">
+            &copy; Sat_temp_convertor. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
